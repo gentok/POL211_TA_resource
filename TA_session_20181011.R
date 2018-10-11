@@ -11,7 +11,7 @@
 #' * **R**: Go to https://cran.r-project.org/. Select the appropriate version 
 #' for your OS to download.
 #' 
-#' **RStudio**: The user-friendly interface to use R. Go to 
+#' * **RStudio**: The user-friendly interface to use R. Go to 
 #' https://www.rstudio.com/products/RStudio and download the free desktop version.
 #' 
 #' ##  Set up RStudio
@@ -134,13 +134,11 @@ sample(x = samplespace, size = 1, replace = FALSE, prob = p)
 #sample with replacement
 sample(x = samplespace, size = 10, replace = TRUE, prob = p)
 
-
 #law of large numbers
-set.seed(34567)
-n <- 1000 #change n to see LLN in action
+set.seed(34567) # For the replicable result
+n <- 10000 #change n to see LLN in action
 #trials <- sample(x = samplespace, size = n, replace = TRUE, prob = p); trials
-trials <- replicate(n, sample(samplespace, 1, prob = p)); trials
-?sample
+trials <- replicate(n, sample(samplespace, 1, prob = p))
 mean(trials)
 
 #mean wins says nothing about overall earnings of player 1
