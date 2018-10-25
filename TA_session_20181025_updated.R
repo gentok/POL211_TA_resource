@@ -11,19 +11,28 @@ rm(list = ls()) # Remove all objects from workspace.
 #' 
 #' Calculate the answer to the proability that at least all hotels have one person
 
+# Adding Hotel E
+
 test <- list(NA)
 index <- list(NA)
 i <- 1
 
-for(na in 1:12){
-  for(nb in 1:(13-na)){
-    for(nc in 1:(14-na-nb)){
-      test[i] <- 1/16 * 1/(16 - na) * 1/(16-na-nb)
-      index[i] <- i
-      i <- i + 1
+for(na in 1:11){
+  for(nb in 1:(12-na)){
+    for(nc in 1:(13-na-nb)){
+      for(nd in 1:(14-na-nb-nc)){
+        test[i] <- 1/16 * 1/(16 - na) * 1/(16-na-nb) * 1/(16-na-nb-nc)
+        index[i] <- i
+        i <- i + 1
+      }
     }
   }
 }
+
+# 1001 combinations of na, nb, nc, & nd
+length(test)
+# Pr of at least one tourist staying in Hotel E
+sum(as.numeric(test))
 
 #' ## Distribution Functions
 
@@ -42,9 +51,9 @@ pbinom(900, size = 1000, prob = c(0.9))
 sum(dbinom(0:900, size = 1000, prob = c(0.9)))
 
 # The value that satisfies the specific cummulative probabilities 
-qbinom(0.8, size = 1000, prob = c(0.9))
+qbinom(0.5154177, size = 1000, prob = c(0.9))
 
-#' ### Binomial Distribution?
+#' ### Bernoui Distribution?
 rbinom(10, size = 1, prob=0.5)
 
 #' ### Poisson Distribution
@@ -79,4 +88,4 @@ qnbinom(0.8, size=1000, prob=0.8)
 ## Render PDF Document 
 
 #+ eval=FALSE, echo=FALSE
-rmarkdown::render("TA_session_20181025_updated.R","pdf_document")
+rmarkdown::render("TA_session_20181025.R","pdf_document")
